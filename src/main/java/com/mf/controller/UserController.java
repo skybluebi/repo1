@@ -157,7 +157,9 @@ public class UserController {
 	 */
 	public JsonArray getAllMenuByParentId(Integer parentId,Integer roleId){
 		JsonArray jsonArray=this.getMenuByParentId(parentId, roleId);
+
 		for(int i=0;i<jsonArray.size();i++){
+
 			JsonObject jsonObject=(JsonObject) jsonArray.get(i);
 			if("open".equals(jsonObject.get("state").getAsString())){
 				continue;//如果是子节点跳过 反之是主节点添加子节点
@@ -167,6 +169,7 @@ public class UserController {
 				jsonObject.add("children", getAllMenuByParentId(jsonObject.get("id").getAsInt(), roleId));
 			}
 		}
+
 		return jsonArray;
 	}
 	

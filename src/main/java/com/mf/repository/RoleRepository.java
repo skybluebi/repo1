@@ -21,7 +21,8 @@ public interface RoleRepository extends JpaRepository<Role, Integer>,JpaSpecific
 	 * @return
 	 */
 	//三表联合查 role  login查了一次   权限认证又查一次
-	@Query(value="SELECT r.* FROM t_user u,t_role r,t_user_role ur WHERE ur.`user_id`=u.`id` AND ur.`role_id`=r.`id` AND u.`id`=?1",nativeQuery=true)
+	@Query(value="SELECT r.* FROM t_user u,t_role r,t_user_role ur " +
+			"WHERE ur.`user_id`=u.`id` AND ur.`role_id`=r.`id` AND u.`id`=?1",nativeQuery=true)
 	public List<Role> findByUserId(Integer id);
 	
 	/**

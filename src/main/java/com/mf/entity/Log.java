@@ -57,6 +57,7 @@ public class Log {
 	public Log() {
 		super();
 		// TODO Auto-generated constructor stub
+
 	}
 	
 	
